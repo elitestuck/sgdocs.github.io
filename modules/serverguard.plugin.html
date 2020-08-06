@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><strong>serverguard.plugin</strong></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.plugin</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Library for managing plugins.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.plugin.New">serverguard.plugin.New()</a></td>
+<td class="summary">Creates a new plugin table.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.plugin.FindByID">serverguard.plugin.FindByID(unique)</a></td>
+<td class="summary">Returns a plugin table with the specified name.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.plugin.GetList">serverguard.plugin.GetList()</a></td>
+<td class="summary">Returns all registered plugins.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.plugin:Toggle">serverguard.plugin:Toggle(uniqueID, bToggled)</a></td>
+<td class="summary">Enables or disables a plugin.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.plugin.LoadFiles">serverguard.plugin.LoadFiles()</a></td>
+<td class="summary">Load plugin files.</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#plugin">plugin</a></td>
+<td class="summary">Registers a plugin.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.plugin.New"></a>
+<strong>serverguard.plugin.New()</strong>
+</dt>
+<dd>
+Creates a new plugin table.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Plugin table.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.plugin.FindByID"></a>
+<strong>serverguard.plugin.FindByID(unique)</strong>
+</dt>
+<dd>
+Returns a plugin table with the specified name.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Unique ID of the plugin.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Plugin table.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.plugin.GetList"></a>
+<strong>serverguard.plugin.GetList()</strong>
+</dt>
+<dd>
+Returns all registered plugins.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Table of plugin tables.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.plugin:Toggle"></a>
+<strong>serverguard.plugin:Toggle(uniqueID, bToggled)</strong>
+</dt>
+<dd>
+Enables or disables a plugin. This toggles any registered hooks, chat commands, or UI categories.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Unique ID of the plugin.
+</li>
+<li><span class="parameter">bToggled</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to turn the plugin on.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.plugin.LoadFiles"></a>
+<strong>serverguard.plugin.LoadFiles()</strong>
+</dt>
+<dd>
+Load plugin files. This should <strong>not</strong> be called manually as it's done automatically when ServerGuard starts.
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="plugin"></a>
+<strong>plugin</strong>
+</dt>
+<dd>
+Registers a plugin.
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

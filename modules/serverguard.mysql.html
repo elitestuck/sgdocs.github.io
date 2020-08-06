@@ -1,0 +1,820 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_QUERY_CLASS">Class QUERY_CLASS </a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><strong>serverguard.mysql</strong></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.mysql</code></h1>
+<p>
+<h2>Serverside</h2>
+<p> Handles SQL module selection, SQL queries.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Class_QUERY_CLASS">Class QUERY_CLASS </a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:New">QUERY_CLASS:New(tableName, queryType)</a></td>
+<td class="summary"><strong>This is called internally, use the corresponding methods.</strong>
+Creates a new query object.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Escape">QUERY_CLASS:Escape(text)</a></td>
+<td class="summary">Escapes the given string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Where">QUERY_CLASS:Where(key, value)</a></td>
+<td class="summary">Adds a WHERE clause to the SQL query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereEqual">QUERY_CLASS:WhereEqual(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> = value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereNotEqual">QUERY_CLASS:WhereNotEqual(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> != value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereLike">QUERY_CLASS:WhereLike(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> LIKE value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereNotLike">QUERY_CLASS:WhereNotLike(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> NOT LIKE value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereGT">QUERY_CLASS:WhereGT(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> > value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereLT">QUERY_CLASS:WhereLT(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> &lt; value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereGTE">QUERY_CLASS:WhereGTE(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> >= value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:WhereLTE">QUERY_CLASS:WhereLTE(key, value)</a></td>
+<td class="summary">Adds a "WHERE <code>column</code> &lt;= value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:OrderByDesc">QUERY_CLASS:OrderByDesc(key)</a></td>
+<td class="summary">Adds a "ORDER BY <code>column</code> DESC" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:OrderByAsc">QUERY_CLASS:OrderByAsc(key)</a></td>
+<td class="summary">Adds a "ORDER BY <code>column</code> ASC" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Callback">QUERY_CLASS:Callback(queryCallback)</a></td>
+<td class="summary">Sets the function to be called when the query finishes.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Select">QUERY_CLASS:Select(fieldName)</a></td>
+<td class="summary">Adds a "SELECT <code>column</code> FROM" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Insert">QUERY_CLASS:Insert(key, value)</a></td>
+<td class="summary">Adds a "INSERT INTO <code>column</code> VALUES(value)" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Update">QUERY_CLASS:Update(key, value)</a></td>
+<td class="summary">Adds a "UPDATE <code>column</code> SET key=value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Create">QUERY_CLASS:Create(key, value)</a></td>
+<td class="summary">Populates the table create list with the given keys and values if the query is a CREATE query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:PrimaryKey">QUERY_CLASS:PrimaryKey(key)</a></td>
+<td class="summary">Sets the primary key for the table.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Limit">QUERY_CLASS:Limit(value)</a></td>
+<td class="summary">Adds a "LIMIT value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Offset">QUERY_CLASS:Offset(value)</a></td>
+<td class="summary">Adds a "OFFSET value" clause to the query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#QUERY_CLASS:Execute">QUERY_CLASS:Execute([bQueueQuery])</a></td>
+<td class="summary">Executes the query on the database.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Select">serverguard.mysql:Select(tableName)</a></td>
+<td class="summary">Creates a new SELECT query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Insert">serverguard.mysql:Insert(tableName)</a></td>
+<td class="summary">Creates a new INSERT INTO query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Update">serverguard.mysql:Update(tableName)</a></td>
+<td class="summary">Creates a new UPDATE query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Delete">serverguard.mysql:Delete(tableName)</a></td>
+<td class="summary">Creates a new DELETE query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Drop">serverguard.mysql:Drop(tableName)</a></td>
+<td class="summary">Creates a new DROP query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Create">serverguard.mysql:Create(tableName)</a></td>
+<td class="summary">Creates a new CREATE TABLE query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Connect">serverguard.mysql:Connect(host, username, password, database[, port][, socket], flags)</a></td>
+<td class="summary">Connects to the SQL database with the given information.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:RawQuery">serverguard.mysql:RawQuery(query, callback, flags)</a></td>
+<td class="summary">Sends a query to the database without any preprocessing.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Queue">serverguard.mysql:Queue(queryString, callback)</a></td>
+<td class="summary">Adds a query to the queue to be executed once previously pending ones have finished.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Escape">serverguard.mysql:Escape(text[, bNoQuotes])</a></td>
+ <td class="summary">Escapes the string to be used in a query.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:Disconnect">serverguard.mysql:Disconnect()</a></td>
+<td class="summary">Disconnects from the SQL database.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.mysql:SetModule">serverguard.mysql:SetModule(moduleName)</a></td>
+<td class="summary">A function to set the SQL module to be used.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header has-description"><a name="Class_QUERY_CLASS"></a>Class QUERY_CLASS </h2>
+<div class="section-description">
+Query class object that holds information about the current query being built.
+</div>
+<dl class="function">
+<dt>
+<a name="QUERY_CLASS:New"></a>
+<strong>QUERY_CLASS:New(tableName, queryType)</strong>
+</dt>
+<dd>
+<strong>This is called internally, use the corresponding methods.</strong>
+Creates a new query object.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table to manipulate.
+</li>
+<li><span class="parameter">queryType</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The type of query to start building. (i.e CREATE, UPDATE, INSERT, etc.)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Escape"></a>
+<strong>QUERY_CLASS:Escape(text)</strong>
+</dt>
+<dd>
+Escapes the given string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The string to escape.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The escaped string.
+</ol>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Where"></a>
+<strong>QUERY_CLASS:Where(key, value)</strong>
+</dt>
+<dd>
+Adds a WHERE clause to the SQL query. Analagous to WhereEqual.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereEqual"></a>
+<strong>QUERY_CLASS:WhereEqual(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> = value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereNotEqual"></a>
+<strong>QUERY_CLASS:WhereNotEqual(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> != value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+ <li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereLike"></a>
+<strong>QUERY_CLASS:WhereLike(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> LIKE value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereNotLike"></a>
+<strong>QUERY_CLASS:WhereNotLike(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> NOT LIKE value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereGT"></a>
+<strong>QUERY_CLASS:WhereGT(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> > value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereLT"></a>
+<strong>QUERY_CLASS:WhereLT(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> &lt; value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereGTE"></a>
+<strong>QUERY_CLASS:WhereGTE(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> >= value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:WhereLTE"></a>
+<strong>QUERY_CLASS:WhereLTE(key, value)</strong>
+</dt>
+<dd>
+Adds a "WHERE <code>column</code> &lt;= value" clause to the query.
+You can use multiple of these statements to compare more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to compare.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to compare with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:OrderByDesc"></a>
+<strong>QUERY_CLASS:OrderByDesc(key)</strong>
+</dt>
+<dd>
+Adds a "ORDER BY <code>column</code> DESC" clause to the query.
+You can use multiple of these statements to sort by more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to sort.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:OrderByAsc"></a>
+<strong>QUERY_CLASS:OrderByAsc(key)</strong>
+</dt>
+<dd>
+Adds a "ORDER BY <code>column</code> ASC" clause to the query.
+You can use multiple of these statements to sort by more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to sort.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Callback"></a>
+<strong>QUERY_CLASS:Callback(queryCallback)</strong>
+</dt>
+<dd>
+Sets the function to be called when the query finishes.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">queryCallback</span>
+<span class="types"><span class="type">function</span></span>
+The callback function to execute.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Select"></a>
+<strong>QUERY_CLASS:Select(fieldName)</strong>
+</dt>
+<dd>
+Adds a "SELECT <code>column</code> FROM" clause to the query.
+You can use multiple of these statements to select more than one column.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">fieldName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to select.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Insert"></a>
+<strong>QUERY_CLASS:Insert(key, value)</strong>
+</dt>
+<dd>
+Adds a "INSERT INTO <code>column</code> VALUES(value)" clause to the query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to insert into.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to insert.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Update"></a>
+<strong>QUERY_CLASS:Update(key, value)</strong>
+</dt>
+<dd>
+Adds a "UPDATE <code>column</code> SET key=value" clause to the query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to update.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to update to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Create"></a>
+<strong>QUERY_CLASS:Create(key, value)</strong>
+</dt>
+<dd>
+Populates the table create list with the given keys and values if the query is a CREATE query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The column to create.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to set it to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:PrimaryKey"></a>
+<strong>QUERY_CLASS:PrimaryKey(key)</strong>
+</dt>
+<dd>
+Sets the primary key for the table.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The primary key.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Limit"></a>
+<strong>QUERY_CLASS:Limit(value)</strong>
+</dt>
+<dd>
+Adds a "LIMIT value" clause to the query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">value</span>
+<span class="types"><span class="type">number</span></span>
+The value to limit the query to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Offset"></a>
+<strong>QUERY_CLASS:Offset(value)</strong>
+</dt>
+<dd>
+Adds a "OFFSET value" clause to the query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">value</span>
+<span class="types"><span class="type">number</span></span>
+The amount to offset by.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="QUERY_CLASS:Execute"></a>
+<strong>QUERY_CLASS:Execute([bQueueQuery])</strong>
+</dt>
+<dd>
+Executes the query on the database.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">bQueueQuery</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to queue the query. Defaults to false.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.mysql:Select"></a>
+<strong>serverguard.mysql:Select(tableName)</strong>
+</dt>
+<dd>
+Creates a new SELECT query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Insert"></a>
+<strong>serverguard.mysql:Insert(tableName)</strong>
+</dt>
+<dd>
+Creates a new INSERT INTO query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Update"></a>
+<strong>serverguard.mysql:Update(tableName)</strong>
+</dt>
+<dd>
+Creates a new UPDATE query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Delete"></a>
+<strong>serverguard.mysql:Delete(tableName)</strong>
+</dt>
+<dd>
+Creates a new DELETE query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Drop"></a>
+<strong>serverguard.mysql:Drop(tableName)</strong>
+</dt>
+<dd>
+Creates a new DROP query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Create"></a>
+<strong>serverguard.mysql:Create(tableName)</strong>
+</dt>
+<dd>
+Creates a new CREATE TABLE query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">tableName</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the table.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">QUERY_CLASS</span></span>
+The query object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.mysql:Connect"></a>
+<strong>serverguard.mysql:Connect(host, username, password, database[, port][, socket], flags)</strong>
+</dt>
+<dd>
+Connects to the SQL database with the given information.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">host</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The host name.
+</li>
+<li><span class="parameter">username</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The username.
+</li>
+<li><span class="parameter">password</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The password.
+</li>
+<li><span class="parameter">database</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the database.
+</li>
+<li><span class="parameter">port</span>
+<span class="types"><span class="type">number</span></span>
+The port to use. Defaults to 3306.
+(<em>optional</em>)
+</li>
+<li><span class="parameter">socket</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unix socket to use. Defaults to none.
+(<em>optional</em>)
+</li>
+<li><span class="parameter">flags</span>
+<span class="types"><span class="type">number</span></span>
+The query flags to use. Usually these aren't needed.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.mysql:RawQuery"></a>
+<strong>serverguard.mysql:RawQuery(query, callback, flags)</strong>
+</dt>
+<dd>
+Sends a query to the database without any preprocessing. You should not use this unless
+you know what you're doing.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">query</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The query to run.
+</li>
+<li><span class="parameter">callback</span>
+<span class="types"><span class="type">function</span></span>
+The function to call when the query finishes.
+</li>
+<li><span class="parameter">flags</span>
+<span class="types"><span class="type">number</span></span>
+The flags to set on the query. Usually this isn't needed.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.mysql:Queue"></a>
+<strong>serverguard.mysql:Queue(queryString, callback)</strong>
+</dt>
+<dd>
+Adds a query to the queue to be executed once previously pending ones have finished.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">queryString</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The query to run.
+</li>
+<li><span class="parameter">callback</span>
+<span class="types"><span class="type">function</span></span>
+The function to run when the query executes.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.mysql:Escape"></a>
+<strong>serverguard.mysql:Escape(text[, bNoQuotes])</strong>
+</dt>
+<dd>
+Escapes the string to be used in a query.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The string to escape.
+</li>
+<li><span class="parameter">bNoQuotes</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to NOT wrap with quotes. Defaults to false.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.mysql:Disconnect"></a>
+<strong>serverguard.mysql:Disconnect()</strong>
+</dt>
+<dd>
+Disconnects from the SQL database.
+</dd>
+<dt>
+<a name="serverguard.mysql:SetModule"></a>
+<strong>serverguard.mysql:SetModule(moduleName)</strong>
+</dt>
+<dd>
+A function to set the SQL module to be used. This should not be set unless
+you know what you're doing!
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">moduleName</span>
+</li>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

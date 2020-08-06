@@ -1,0 +1,1296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><strong>util</strong></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>util</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Extension of util library to provide convenience functions.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#GetSortedPlayers">GetSortedPlayers()</a></td>
+<td class="summary">Gets a sorted list of players connected to the server.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PlayerMatchesIdentifier">PlayerMatchesIdentifier(player, identifier)</a></td>
+<td class="summary">Returns whether or not the player can be compared <strong>EXACTLY</strong> with a given identifier.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PlayerContainsIdentifier">PlayerContainsIdentifier(player, identifier)</a></td>
+<td class="summary">Returns whether or not the player can be compared with a given identifier.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PlayerMatchesImmunity">PlayerMatchesImmunity(requiredImmunity, player, target)</a></td>
+<td class="summary">Returns whether or not the target's immunity level fulfills the required immunity comparison with the player.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ExecuteOnPlayers">ExecuteOnPlayers(identifier, callingPlayer, requiredImmunity, func)</a></td>
+<td class="summary">Attempts to find all connected players matching the given query, and runs a function with that player as an argument.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#FindPlayer">FindPlayer(identifier, user, bNoMessage)</a></td>
+<td class="summary">Attempts to find a connected player by a given identifier.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ToNumber">ToNumber(value)</a></td>
+<td class="summary">Alternative tonumber function that always returns a number.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#FormatNumber">FormatNumber(number)</a></td>
+<td class="summary">Formats a number to include commas.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#string.Capitalize">string.Capitalize(text)</a></td>
+<td class="summary">Capitalizes the first letter of a string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#string.Ownership">string.Ownership(text, bSuffixOnly)</a></td>
+<td class="summary">Returns the ownership suffix of a string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#string.SteamID">string.SteamID(text)</a></td>
+<td class="summary">Returns a Steam ID from a string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ExplodeByTags">ExplodeByTags(text, seperator, open, close, bRemoveTag)</a></td>
+<td class="summary">Explodes a string by enclosed tabs.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#IsConsole">IsConsole(object)</a></td>
+<td class="summary">Checks to see whether or not a variable is the console.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#IsoDurationToSeconds">IsoDurationToSeconds(iso)</a></td>
+<td class="summary">Converts an ISO 8601 duration timestamp used by YouTube to seconds.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ParseDuration">ParseDuration(input)</a></td>
+<td class="summary">Converts a duration (e.g 1d12h) to minutes.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PrintAll">PrintAll(text)</a></td>
+<td class="summary">(SERVER) Prints text to the chatbox of all connected players.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PrintAllColor">PrintAllColor(...)</a></td>
+<td class="summary">(SERVER) Prints coloured text to the chatbox of all connected players.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PrintConsoleAdmins">PrintConsoleAdmins(text)</a></td>
+<td class="summary">(SERVER) Prints text to the console of connected admins.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#InstallHandHover">InstallHandHover(panel)</a></td>
+<td class="summary">Makes a panel change the cursor to a hand when hovered.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PaintShadow">PaintShadow(x, y, w, h, passes, depth)</a></td>
+<td class="summary">(CLIENT) Draws a box shadow.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#DimColor">DimColor(color, amount)</a></td>
+<td class="summary">(CLIENT) Darkens a colour by a given amount.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ColorLimit">ColorLimit(color, r, g, b, a)</a></td>
+<td class="summary">(CLIENT) Limits how dark a colour can be.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ColorString">ColorString(color, bExcludeAlpha)</a></td>
+<td class="summary">(CLIENT) Gets the string version of a colour.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.SimpleRect">draw.SimpleRect(x, y, w, h, col)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rectangle.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.SimpleOutlined">draw.SimpleOutlined(x, y, w, h, col)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rectangle outline.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.DoubleOutlined">draw.DoubleOutlined(x, y, w, h, col)</a></td>
+<td class="summary">(CLIENT) Draws two coloured rectangle outlines.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.Material">draw.Material(x, y, w, h, color, material)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rectangle with a material.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.MaterialRotated">draw.MaterialRotated(x, y, w, h, color, material, rotated)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rotated rectangle with a material.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.Texture">draw.Texture(x, y, w, h, color, texture)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rectangle with a texture.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.TextureRotated">draw.TextureRotated(x, y, w, h, color, texture, rotated)</a></td>
+<td class="summary">(CLIENT) Draws a coloured rotated rectangle with a texture.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.SimpleTextOutline">draw.SimpleTextOutline(text, font, x, y, col, colOutline, xAlign, yAlign, outline)</a></td>
+<td class="summary">(CLIENT) Draws text with an outline.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#GetTextSize">GetTextSize(font, text)</a></td>
+<td class="summary">(CLIENT) Gets the size of text with a given font.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#simpleLabel">simpleLabel(parent, title, col, font, x, y)</a></td>
+<td class="summary">(CLIENT) Creates a parented label.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#simpleButton">simpleButton(parent, x, y, w, h, text, bDisabled, func)</a></td>
+<td class="summary">(CLIENT) Creates a parented button.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CreateStringRequest">CreateStringRequest(title, ...)</a></td>
+<td class="summary">(CLIENT) Creates a visual request for an input string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CreateDialog">CreateDialog(title, text, ...)</a></td>
+<td class="summary">(CLIENT) Creates a dialog.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CreateControls">CreateControls(object, ...)</a></td>
+<td class="summary">(CLIENT) Creates multiple derma controls.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.TextRotated">draw.TextRotated(text, x, y, xScale, yScale, angle)</a></td>
+<td class="summary">(CLIENT) Draws rotated text.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#draw.Circle">draw.Circle(x, y, radius, segments)</a></td>
+<td class="summary">(CLIENT) Draws a circle.</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#targets">targets</a></td>
+<td class="summary">Obtains a list of elements suitable for <a href="../modules/serverguard.html#Notify">serverguard.Notify</a> for the given player list.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="GetSortedPlayers"></a>
+<strong>GetSortedPlayers()</strong>
+</dt>
+<dd>
+Gets a sorted list of players connected to the server.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Player list.
+</ol>
+</dd>
+<dt>
+<a name="PlayerMatchesIdentifier"></a>
+<strong>PlayerMatchesIdentifier(player, identifier)</strong>
+</dt>
+<dd>
+Returns whether or not the player can be compared <strong>EXACTLY</strong> with a given identifier.
+This is more strict, and will match exact names.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to extract the information from.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The string to compare with.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether the player matches the given identifier.
+</ol>
+</dd>
+<dt>
+<a name="PlayerContainsIdentifier"></a>
+<strong>PlayerContainsIdentifier(player, identifier)</strong>
+</dt>
+<dd>
+Returns whether or not the player can be compared with a given identifier.
+This will be more lenient with finding substrings in a player's name, for example.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to extract the information from.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The string to compare with.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether the player contains the given identifier.
+</ol>
+</dd>
+<dt>
+<a name="PlayerMatchesImmunity"></a>
+<strong>PlayerMatchesImmunity(requiredImmunity, player, target)</strong>
+</dt>
+<dd>
+Returns whether or not the target's immunity level fulfills the required immunity comparison with the player.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">requiredImmunity</span>
+<span class="types"><span class="type">number</span></span>
+The required immunity comparison.
+</li>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to be compared to.
+</li>
+<li><span class="parameter">target</span>
+<span class="types"><span class="type">player</span></span>
+The player to be compared with.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether the immunity requirement has been fulfilled.
+</ol>
+</dd>
+<dt>
+<a name="ExecuteOnPlayers"></a>
+<strong>ExecuteOnPlayers(identifier, callingPlayer, requiredImmunity, func)</strong>
+</dt>
+<dd>
+Attempts to find all connected players matching the given query, and runs a function with that player as an argument.
+Valid identifiers include name, Steam ID, 64-bit Steam ID, IP address, a comma-separated list, or a special tag.
+Tags include ^ for self, * for all, and #name for all players with the given rank. You can use ! to negate the action.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to try and match players with.
+</li>
+<li><span class="parameter">callingPlayer</span>
+<span class="types"><span class="type">player</span></span>
+Player who initiated the query.
+</li>
+<li><span class="parameter">requiredImmunity</span>
+<span class="types"><span class="type">number</span></span>
+The required immunity level between the calling player and any targets for the function to run.
+</li>
+<li><span class="parameter">func</span>
+<span class="types"><span class="type">function</span></span>
+Function to run with all applicable targets.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+List of applicable players.
+</ol>
+</dd>
+<dt>
+<a name="FindPlayer"></a>
+<strong>FindPlayer(identifier, user, bNoMessage)</strong>
+</dt>
+<dd>
+Attempts to find a connected player by a given identifier.
+Valid identifiers include name, Steam ID, 64-bit Steam ID, and IP address.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Identifier to search with.
+</li>
+<li><span class="parameter">user</span>
+<span class="types"><span class="type">player</span></span>
+Player to provide notifies to.
+</li>
+<li><span class="parameter">bNoMessage</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to provide feedback to the player.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="ToNumber"></a>
+<strong>ToNumber(value)</strong>
+</dt>
+<dd>
+Alternative tonumber function that always returns a number. Returns 0 if unable to convert to number.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">value</span>
+Any variable to attempt to a number.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">number</span></span>
+Converted number.
+</ol>
+</dd>
+<dt>
+<a name="FormatNumber"></a>
+<strong>FormatNumber(number)</strong>
+</dt>
+<dd>
+Formats a number to include commas.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">number</span>
+<span class="types"><span class="type">number</span></span>
+Number to format.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Formatted number.
+</ol>
+</dd>
+<dt>
+<a name="string.Capitalize"></a>
+<strong>string.Capitalize(text)</strong>
+</dt>
+<dd>
+Capitalizes the first letter of a string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to capitalize.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Capitalized string.
+</ol>
+</dd>
+<dt>
+<a name="string.Ownership"></a>
+<strong>string.Ownership(text, bSuffixOnly)</strong>
+</dt>
+<dd>
+Returns the ownership suffix of a string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to find ownership for.
+</li>
+<li><span class="parameter">bSuffixOnly</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to return only the suffix.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String with ownership.
+</ol>
+</dd>
+<dt>
+<a name="string.SteamID"></a>
+<strong>string.SteamID(text)</strong>
+</dt>
+<dd>
+Returns a Steam ID from a string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to check for a Steam ID.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">text</span></span>
+The matched Steam ID.
+</ol>
+</dd>
+<dt>
+<a name="ExplodeByTags"></a>
+<strong>ExplodeByTags(text, seperator, open, close, bRemoveTag)</strong>
+</dt>
+<dd>
+Explodes a string by enclosed tabs.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to explode.
+</li>
+<li><span class="parameter">seperator</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to separate tags by.
+</li>
+<li><span class="parameter">open</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to use as the beginning of a tag.
+</li>
+<li><span class="parameter">close</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+String to use as the end of a tag.
+</li>
+<li><span class="parameter">bRemoveTag</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to remove the tag characters from the result.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Exploded string.
+</ol>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">util.ExplodeByTags(<span class="string">"!this 'is a test'"</span>, <span class="string">" "</span>, <span class="string">"'"</span>, <span class="string">"'"</span>, <span class="keyword">true</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="IsConsole"></a>
+<strong>IsConsole(object)</strong>
+</dt>
+<dd>
+Checks to see whether or not a variable is the console.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">object</span>
+Any variable.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the variable is the console.
+</ol>
+</dd>
+<dt>
+<a name="IsoDurationToSeconds"></a>
+<strong>IsoDurationToSeconds(iso)</strong>
+</dt>
+<dd>
+Converts an ISO 8601 duration timestamp used by YouTube to seconds.
+Note: this is not entirely accurate to the ISO standard - it's only tested for use with YouTube's duration format.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">iso</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The ISO duration.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">number</span></span>
+The ISO duration in seconds. Returns -1 for an invalid ISO duration.
+</ol>
+</dd>
+<dt>
+<a name="ParseDuration"></a>
+<strong>ParseDuration(input)</strong>
+</dt>
+<dd>
+Converts a duration (e.g 1d12h) to minutes. Clamps all numbers between 0 and 99.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">input</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The input duration. This can be a number, but it will return that number.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<li>
+<span class="types"><span class="type">number</span></span>
+The duration in minutes.</li>
+<li>
+<span class="types"><span class="type">text</span></span>
+The duration in text form (1 year, 3 days, etc).</li>
+<li>
+<span class="types"><span class="type">bool</span></span>
+Whether or not any input values have been clamped.</li>
+</ol>
+</dd>
+<dt>
+<a name="PrintAll"></a>
+<strong>PrintAll(text)</strong>
+</dt>
+<dd>
+(SERVER) Prints text to the chatbox of all connected players.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text to print.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="PrintAllColor"></a>
+<strong>PrintAllColor(...)</strong>
+</dt>
+<dd>
+(SERVER) Prints coloured text to the chatbox of all connected players.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">...</span>
+Color and text to use.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">util.PrintAllColor(Color(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="string">"Hello! "</span>, Color(<span class="number">200</span>, <span class="number">30</span>, <span class="number">30</span>), <span class="string">"This is a test."</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="PrintConsoleAdmins"></a>
+<strong>PrintConsoleAdmins(text)</strong>
+</dt>
+<dd>
+(SERVER) Prints text to the console of connected admins.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text to print.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="InstallHandHover"></a>
+<strong>InstallHandHover(panel)</strong>
+</dt>
+<dd>
+Makes a panel change the cursor to a hand when hovered.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">panel</span>
+<span class="types"><span class="type">panel</span></span>
+Panel to install hover to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="PaintShadow"></a>
+<strong>PaintShadow(x, y, w, h, passes, depth)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a box shadow.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of box.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of box.
+</li>
+<li><span class="parameter">passes</span>
+<span class="types"><span class="type">number</span></span>
+The amount of passes when drawing the shadow.
+</li>
+<li><span class="parameter">depth</span>
+<span class="types"><span class="type">number</span></span>
+The depth of the shadow.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="DimColor"></a>
+<strong>DimColor(color, amount)</strong>
+</dt>
+<dd>
+(CLIENT) Darkens a colour by a given amount. Does not include alpha.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour to dim.
+</li>
+<li><span class="parameter">amount</span>
+<span class="types"><span class="type">number</span></span>
+How much to dim.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">color</span></span>
+Dimmed colour.
+</ol>
+</dd>
+<dt>
+<a name="ColorLimit"></a>
+<strong>ColorLimit(color, r, g, b, a)</strong>
+</dt>
+<dd>
+(CLIENT) Limits how dark a colour can be.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour to limit.
+</li>
+<li><span class="parameter">r</span>
+<span class="types"><span class="type">number</span></span>
+Minimum red value.
+</li>
+<li><span class="parameter">g</span>
+<span class="types"><span class="type">number</span></span>
+Minimum green value.
+</li>
+<li><span class="parameter">b</span>
+<span class="types"><span class="type">number</span></span>
+Minimum blue value.
+</li>
+<li><span class="parameter">a</span>
+<span class="types"><span class="type">number</span></span>
+Minimum alpha value.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">color</span></span>
+Limited colour.
+</ol>
+</dd>
+<dt>
+<a name="ColorString"></a>
+<strong>ColorString(color, bExcludeAlpha)</strong>
+</dt>
+<dd>
+(CLIENT) Gets the string version of a colour.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour to get string from.
+</li>
+<li><span class="parameter">bExcludeAlpha</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to include the alpha in the string.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Colour string.
+</ol>
+</dd>
+<dt>
+<a name="draw.SimpleRect"></a>
+<strong>draw.SimpleRect(x, y, w, h, col)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rectangle.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">col</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.SimpleOutlined"></a>
+<strong>draw.SimpleOutlined(x, y, w, h, col)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rectangle outline.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">col</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.DoubleOutlined"></a>
+<strong>draw.DoubleOutlined(x, y, w, h, col)</strong>
+</dt>
+<dd>
+(CLIENT) Draws two coloured rectangle outlines.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">col</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.Material"></a>
+<strong>draw.Material(x, y, w, h, color, material)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rectangle with a material.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+<li><span class="parameter">material</span>
+<span class="types"><span class="type">material</span></span>
+Material to draw with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.MaterialRotated"></a>
+<strong>draw.MaterialRotated(x, y, w, h, color, material, rotated)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rotated rectangle with a material.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+<li><span class="parameter">material</span>
+<span class="types"><span class="type">material</span></span>
+Material to draw with.
+</li>
+<li><span class="parameter">rotated</span>
+<span class="types"><span class="type">number</span></span>
+Amount to rotate rectangle by.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.Texture"></a>
+<strong>draw.Texture(x, y, w, h, color, texture)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rectangle with a texture.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+<li><span class="parameter">texture</span>
+<span class="types"><span class="type">texture</span></span>
+Texture to draw with.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.TextureRotated"></a>
+<strong>draw.TextureRotated(x, y, w, h, color, texture, rotated)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a coloured rotated rectangle with a texture.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of rectangle.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of rectangle.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+Colour of rectangle.
+</li>
+<li><span class="parameter">texture</span>
+<span class="types"><span class="type">texture</span></span>
+Texture to draw with.
+</li>
+<li><span class="parameter">rotated</span>
+<span class="types"><span class="type">number</span></span>
+Amount to rotate rectangle by.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.SimpleTextOutline"></a>
+<strong>draw.SimpleTextOutline(text, font, x, y, col, colOutline, xAlign, yAlign, outline)</strong>
+</dt>
+<dd>
+(CLIENT) Draws text with an outline.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text to draw.
+</li>
+<li><span class="parameter">font</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Font to use.
+</li>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">col</span>
+<span class="types"><span class="type">color</span></span>
+Colour of text.
+</li>
+<li><span class="parameter">colOutline</span>
+<span class="types"><span class="type">color</span></span>
+Colour of outline.
+</li>
+<li><span class="parameter">xAlign</span>
+<span class="types"><span class="type">number</span></span>
+Horizontal alignment.
+</li>
+<li><span class="parameter">yAlign</span>
+<span class="types"><span class="type">number</span></span>
+Vertical alignment.
+</li>
+<li><span class="parameter">outline</span>
+<span class="types"><span class="type">number</span></span>
+Outline width.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="GetTextSize"></a>
+<strong>GetTextSize(font, text)</strong>
+</dt>
+<dd>
+(CLIENT) Gets the size of text with a given font.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">font</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Font to use.
+</li>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text to use.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<li>
+<span class="types"><span class="type">number</span></span>
+Width of text.</li>
+<li>
+<span class="types"><span class="type">number</span></span>
+Height of text.</li>
+</ol>
+</dd>
+<dt>
+<a name="simpleLabel"></a>
+<strong>simpleLabel(parent, title, col, font, x, y)</strong>
+</dt>
+<dd>
+(CLIENT) Creates a parented label.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">parent</span>
+<span class="types"><span class="type">panel</span></span>
+Panel to parent to.
+</li>
+<li><span class="parameter">title</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text for the label.
+</li>
+<li><span class="parameter">col</span>
+<span class="types"><span class="type">color</span></span>
+Colour of text.
+</li>
+<li><span class="parameter">font</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Font to use.
+</li>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">panel</span></span>
+Created label.
+</ol>
+</dd>
+<dt>
+<a name="simpleButton"></a>
+<strong>simpleButton(parent, x, y, w, h, text, bDisabled, func)</strong>
+</dt>
+<dd>
+(CLIENT) Creates a parented button.
+ <h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">parent</span>
+<span class="types"><span class="type">panel</span></span>
+Panel to parent to.
+</li>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">w</span>
+<span class="types"><span class="type">number</span></span>
+Width of button.
+</li>
+<li><span class="parameter">h</span>
+<span class="types"><span class="type">number</span></span>
+Height of button.
+</li>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text for the button.
+</li>
+<li><span class="parameter">bDisabled</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not the button is disabled.
+</li>
+<li><span class="parameter">func</span>
+<span class="types"><span class="type">function</span></span>
+Callback to use when button is clicked.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">panel</span></span>
+Created button.
+</ol>
+</dd>
+<dt>
+<a name="CreateStringRequest"></a>
+<strong>CreateStringRequest(title, ...)</strong>
+</dt>
+<dd>
+(CLIENT) Creates a visual request for an input string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">title</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Title of request.
+</li>
+<li><span class="parameter">...</span>
+Options to use.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">util.CreateStringRequest(<span class="string">"Please enter a string!"</span>, <span class="keyword">function</span>(text) <span class="global">print</span>(text) <span class="keyword">end</span>, <span class="string">"Okay"</span>, <span class="keyword">function</span>(text) <span class="keyword">end</span>, <span class="string">"Cancel"</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="CreateDialog"></a>
+<strong>CreateDialog(title, text, ...)</strong>
+</dt>
+<dd>
+(CLIENT) Creates a dialog. Prefix option strings with "&amp;" to make the button text bold.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">title</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Title of dialog.
+</li>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text for dialog.
+</li>
+<li><span class="parameter">...</span>
+Options to use.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">util.CreateDialog(<span class="string">"Test"</span>, <span class="string">"This is simply a test dialog."</span>, <span class="keyword">function</span>() <span class="global">print</span>(<span class="string">"Clicked okay!"</span>) <span class="keyword">end</span>, <span class="string">"&amp;Okay"</span>, <span class="keyword">function</span>() <span class="keyword">end</span>, <span class="string">"Cancel"</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="CreateControls"></a>
+<strong>CreateControls(object, ...)</strong>
+</dt>
+<dd>
+(CLIENT) Creates multiple derma controls.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">object</span>
+[opt] parent The parent control.
+</li>
+<li><span class="parameter">...</span>
+The controls to create.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<li><pre class="example"><span class="keyword">local</span> label, button = util.CreateControls(parent, <span class="string">"DLabel"</span>, <span class="string">"tiger.button"</span>);</pre></li>
+<li><pre class="example"><span class="keyword">local</span> panel, label, button = util.CreateControls(<span class="string">"tiger.panel"</span>, <span class="string">"DLabel"</span>, <span class="string">"tiger.button"</span>);</pre></li>
+</ul>
+</dd>
+<dt>
+<a name="draw.TextRotated"></a>
+<strong>draw.TextRotated(text, x, y, xScale, yScale, angle)</strong>
+</dt>
+<dd>
+(CLIENT) Draws rotated text.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Text to draw.
+</li>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">xScale</span>
+<span class="types"><span class="type">number</span></span>
+Horizontal scale of text.
+</li>
+<li><span class="parameter">yScale</span>
+<span class="types"><span class="type">number</span></span>
+Vertical scale of text.
+</li>
+<li><span class="parameter">angle</span>
+<span class="types"><span class="type">number</span></span>
+Angle to rotate text by.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="draw.Circle"></a>
+<strong>draw.Circle(x, y, radius, segments)</strong>
+</dt>
+<dd>
+(CLIENT) Draws a circle.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">x</span>
+<span class="types"><span class="type">number</span></span>
+X coordinate.
+</li>
+<li><span class="parameter">y</span>
+<span class="types"><span class="type">number</span></span>
+Y coordinate.
+</li>
+<li><span class="parameter">radius</span>
+<span class="types"><span class="type">number</span></span>
+Radius of circle.
+</li>
+<li><span class="parameter">segments</span>
+<span class="types"><span class="type">number</span></span>
+Number of line segments to use.
+</li>
+</ul>
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="targets"></a>
+<strong>targets</strong>
+</dt>
+<dd>
+Obtains a list of elements suitable for <a href="../modules/serverguard.html#Notify">serverguard.Notify</a> for the given player list.
+It is assumed that there is at least one target.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">bOwnership</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to add an ownership suffix (such as "'s").
+</li>
+<li><span class="parameter">targetColor</span>
+<span class="types"><span class="type">number</span></span>
+A SERVERGUARD.NOTIFY color to use.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.html#Notify">serverguard.Notify</a>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

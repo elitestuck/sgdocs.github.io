@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><strong>serverguard.player</strong></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.player</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Player manipulation.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:SetRank">serverguard.player:SetRank(player, rank[, bSaveless])</a></td>
+<td class="summary">Sets a player's rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:GetRank">serverguard.player:GetRank(player)</a></td>
+<td class="summary">Gets the player's rank unique ID.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:SetImmunity">serverguard.player:SetImmunity(player, immunity)</a></td>
+<td class="summary">Sets a player's immunity level.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:SetTargetableRank">serverguard.player:SetTargetableRank(player, immunity)</a></td>
+<td class="summary">Sets a player's targetable rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:GetImmunity">serverguard.player:GetImmunity(player)</a></td>
+<td class="summary">Gets a player's immunity level.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:GetTargetableRank">serverguard.player:GetTargetableRank(player)</a></td>
+<td class="summary">Gets a player's targetable rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:HasBetterImmunity">serverguard.player:HasBetterImmunity(player, immunity)</a></td>
+<td class="summary">Returns whether or not the player has a better targetable level than the immunity specified.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:GetName">serverguard.player:GetName(player)</a></td>
+<td class="summary">Gets a player's name.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:SetupSpectate">serverguard.player:SetupSpectate(player, mode)</a></td>
+<td class="summary">Sets up the spectate routine for the given player.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:StopSpectate">serverguard.player:StopSpectate(player)</a></td>
+<td class="summary">Stops a player from spectating.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:GetSpectatorTarget">serverguard.player:GetSpectatorTarget(player[, decrease])</a></td>
+<td class="summary">Gets the target player that the given player is spectating.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:SpectateTarget">serverguard.player:SpectateTarget(player[, decrease])</a></td>
+<td class="summary">Makes a player spectate the set target.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:ChangeSpectatorMode">serverguard.player:ChangeSpectatorMode(player[, decrease])</a></td>
+<td class="summary">Changes a player's spectator mode.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.player:HasPermission">serverguard.player:HasPermission(player, identifier)</a></td>
+<td class="summary">Gets whether or not the player has the given permission.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.player:SetRank"></a>
+<strong>serverguard.player:SetRank(player, rank[, bSaveless])</strong>
+</dt>
+<dd>
+Sets a player's rank.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to set the rank of.
+</li>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank to set as.
+</li>
+<li><span class="parameter">bSaveless</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to save the player's rank. Defaults to false;
+(<em>optional</em>)
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the operation was successful.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:GetRank"></a>
+<strong>serverguard.player:GetRank(player)</strong>
+</dt>
+<dd>
+Gets the player's rank unique ID. Defaults to "user" if it doesn't exist.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to get the rank of.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The rank's unique ID.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:SetImmunity"></a>
+<strong>serverguard.player:SetImmunity(player, immunity)</strong>
+</dt>
+<dd>
+Sets a player's immunity level.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to set the immunity of.
+</li>
+<li><span class="parameter">immunity</span>
+<span class="types"><span class="type">number</span></span>
+The new immunity level to set.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:SetTargetableRank"></a>
+<strong>serverguard.player:SetTargetableRank(player, immunity)</strong>
+</dt>
+<dd>
+Sets a player's targetable rank.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to set the targetable rank of.
+</li>
+<li><span class="parameter">immunity</span>
+<span class="types"><span class="type">number</span></span>
+The new targetable rank to set.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:GetImmunity"></a>
+<strong>serverguard.player:GetImmunity(player)</strong>
+</dt>
+<dd>
+Gets a player's immunity level. Defaults to 0 if the immunity is not set.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to get the immunity of.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">number</span></span>
+The immunity level of the player.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:GetTargetableRank"></a>
+<strong>serverguard.player:GetTargetableRank(player)</strong>
+</dt>
+<dd>
+Gets a player's targetable rank. Defaults to 0 if the immunity is not set.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to get the targetable rank of.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">number</span></span>
+The targetable rank of the player.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:HasBetterImmunity"></a>
+<strong>serverguard.player:HasBetterImmunity(player, immunity)</strong>
+</dt>
+<dd>
+Returns whether or not the player has a better targetable level than the immunity specified.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to check the targetable rank of.
+</li>
+<li><span class="parameter">immunity</span>
+<span class="types"><span class="type">number</span></span>
+The immunity level to check with.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the player has a better immunity.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:GetName"></a>
+<strong>serverguard.player:GetName(player)</strong>
+</dt>
+<dd>
+Gets a player's name. Will return with the orignal name in if player.SteamName is defined.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:SetupSpectate"></a>
+<strong>serverguard.player:SetupSpectate(player, mode)</strong>
+</dt>
+<dd>
+Sets up the spectate routine for the given player. Strips weapons, makes invisible,
+disables collision, etc.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to set up the spectate mode for.
+</li>
+<li><span class="parameter">mode</span>
+<span class="types"><span class="type">number</span></span>
+The spectate mode to use.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:StopSpectate"></a>
+<strong>serverguard.player:StopSpectate(player)</strong>
+</dt>
+<dd>
+Stops a player from spectating. Returns all of their stuff to normal; weapons,
+collision, etc.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to make stop spectating.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:GetSpectatorTarget"></a>
+<strong>serverguard.player:GetSpectatorTarget(player[, decrease])</strong>
+</dt>
+<dd>
+Gets the target player that the given player is spectating.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The spectating player.
+</li>
+<li><span class="parameter">decrease</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to get the next/previous player.
+(<em>optional</em>)
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">player</span></span>
+The spectated player.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.player:SpectateTarget"></a>
+<strong>serverguard.player:SpectateTarget(player[, decrease])</strong>
+</dt>
+<dd>
+Makes a player spectate the set target.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to put into spectate mode.
+</li>
+<li><span class="parameter">decrease</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether to get the next/previous target.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:ChangeSpectatorMode"></a>
+<strong>serverguard.player:ChangeSpectatorMode(player[, decrease])</strong>
+</dt>
+<dd>
+Changes a player's spectator mode.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to change the mode of.
+</li>
+<li><span class="parameter">decrease</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether to get the next/previous target.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.player:HasPermission"></a>
+<strong>serverguard.player:HasPermission(player, identifier)</strong>
+</dt>
+<dd>
+Gets whether or not the player has the given permission.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to check the permissions of.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the permission. This can also be a table of string to check for multiple permissions.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the player has the given permission.
+</ol>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><strong>serverguard.themes</strong></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.themes</code></h1>
+<p>
+<h2>Client</h2>
+<p> Theming system that handles the creation, saving, loading, and applying of themes to panels.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.New">serverguard.themes.New(name[, theme])</a></td>
+<td class="summary">Creates a new theme.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.Set">serverguard.themes.Set(name, color)</a></td>
+<td class="summary">Sets a colour entry in the current theme.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.GetStored">serverguard.themes.GetStored()</a></td>
+<td class="summary">Retrieves a table of all available themes.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.Get">serverguard.themes.Get(unique)</a></td>
+<td class="summary">Returns a theme's data.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.GetColorNames">serverguard.themes.GetColorNames(panel)</a></td>
+<td class="summary">Gets the name of hooked panel colours.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.GetCurrent">serverguard.themes.GetCurrent()</a></td>
+<td class="summary">Returns the current theme.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.CreateDefault">serverguard.themes.CreateDefault(name, default, panel)</a></td>
+<td class="summary">Creates a colour entry for the default theme.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.IsDefaultTheme">serverguard.themes.IsDefaultTheme(name)</a></td>
+<td class="summary">Checks whether or not a theme is a default theme.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.AddPanel">serverguard.themes.AddPanel(panel, name)</a></td>
+<td class="summary">Hooks a panel to be changed when the theme is modified.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.ApplyChanges">serverguard.themes.ApplyChanges()</a></td>
+<td class="summary">Applies theme colours to hooked panels.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.Save">serverguard.themes.Save()</a></td>
+<td class="summary">Saves all themes stored in memory.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.Remove">serverguard.themes.Remove(name)</a></td>
+<td class="summary">Removes a theme from memory and disk.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.themes.Load">serverguard.themes.Load()</a></td>
+<td class="summary">Loads the themes into memory.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.themes.New"></a>
+<strong>serverguard.themes.New(name[, theme])</strong>
+</dt>
+<dd>
+Creates a new theme.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme.
+</li>
+<li><span class="parameter">theme</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme to base off of.
+(<em>optional</em>)
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Theme data.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.Set"></a>
+<strong>serverguard.themes.Set(name, color)</strong>
+</dt>
+<dd>
+Sets a colour entry in the current theme.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the colour.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+The colour value.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.themes.GetStored"></a>
+<strong>serverguard.themes.GetStored()</strong>
+</dt>
+<dd>
+Retrieves a table of all available themes.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Table of all themes' data.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.Get"></a>
+<strong>serverguard.themes.Get(unique)</strong>
+</dt>
+<dd>
+Returns a theme's data.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Theme data.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.GetColorNames"></a>
+<strong>serverguard.themes.GetColorNames(panel)</strong>
+</dt>
+<dd>
+Gets the name of hooked panel colours.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">panel</span>
+<span class="types"><span class="type">panel</span></span>
+The panel to get the names from.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+List of names.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.GetCurrent"></a>
+<strong>serverguard.themes.GetCurrent()</strong>
+</dt>
+<dd>
+Returns the current theme.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Theme data.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.CreateDefault"></a>
+<strong>serverguard.themes.CreateDefault(name, default, panel)</strong>
+</dt>
+<dd>
+Creates a colour entry for the default theme.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the colour entry.
+</li>
+<li><span class="parameter">default</span>
+<span class="types"><span class="type">color</span></span>
+The default colour to be set.
+</li>
+<li><span class="parameter">panel</span>
+<span class="types"><span class="type">panel</span></span>
+The name of the panel it applies to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.themes.IsDefaultTheme"></a>
+<strong>serverguard.themes.IsDefaultTheme(name)</strong>
+</dt>
+<dd>
+Checks whether or not a theme is a default theme.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the theme is a default theme.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.themes.AddPanel"></a>
+<strong>serverguard.themes.AddPanel(panel, name)</strong>
+</dt>
+<dd>
+Hooks a panel to be changed when the theme is modified. This is currently only used for labels.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">panel</span>
+<span class="types"><span class="type">panel</span></span>
+The panel to hook.
+</li>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme's colour entry to apply.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.themes.ApplyChanges"></a>
+<strong>serverguard.themes.ApplyChanges()</strong>
+</dt>
+<dd>
+Applies theme colours to hooked panels.
+</dd>
+<dt>
+<a name="serverguard.themes.Save"></a>
+<strong>serverguard.themes.Save()</strong>
+</dt>
+<dd>
+Saves all themes stored in memory.
+</dd>
+<dt>
+<a name="serverguard.themes.Remove"></a>
+<strong>serverguard.themes.Remove(name)</strong>
+</dt>
+<dd>
+Removes a theme from memory and disk.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the theme to remove.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.themes.Load"></a>
+<strong>serverguard.themes.Load()</strong>
+</dt>
+<dd>
+Loads the themes into memory.
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

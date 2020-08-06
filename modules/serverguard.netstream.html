@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><strong>serverguard.netstream</strong></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.netstream</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Networking helper library that provides easier access to networking with chunking support.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.netstream.Hook">serverguard.netstream.Hook(name, callback)</a></td>
+<td class="summary">Adds a hook to a data stream.</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary">Splits a table into a series of strings for easier networking.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary">Reconstructs a table of split strings.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary">Sends a data stream to the target.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary">Sends a data stream to the target.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.netstream.Hook"></a>
+<strong>serverguard.netstream.Hook(name, callback)</strong>
+</dt>
+<dd>
+Adds a hook to a data stream.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Name of the data stream.
+</li>
+<li><span class="parameter">callback</span>
+<span class="types"><span class="type">function</span></span>
+Function to execute when the data stream has been received.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+</ul>
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+Splits a table into a series of strings for easier networking.
+<h3>See also:</h3>
+<ul>
+</ul>
+</dd>
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+Reconstructs a table of split strings.
+<h3>See also:</h3>
+<ul>
+</ul>
+</dd>
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+Sends a data stream to the target. Will send to client as server and vice versa.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to send the data to. You should <strong>not</strong> pass this argument clientside.
+</li>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the data stream to send.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.netstream.html#serverguard.netstream.Hook">serverguard.netstream.Hook</a>
+</ul>
+</dd>
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+Sends a data stream to the target. This is used for larger data sets that may exceed the 64kb networking limit.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to send the data to. You should <strong>not</strong> pass this argument clientside.
+</li>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the data stream to send.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.netstream.html#serverguard.netstream.Hook">serverguard.netstream.Hook</a>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

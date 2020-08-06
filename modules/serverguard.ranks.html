@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><strong>serverguard.ranks</strong></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.ranks</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Handles rank loading, saving, assignment, management, etc.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:SavePlayerRank">serverguard.ranks:SavePlayerRank(player, rank)</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Saves a player's rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:Load">serverguard.ranks:Load()</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Loads all of the ranks into memory.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:SendUpdate">serverguard.ranks:SendUpdate(player)</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Sends all ranks' data to a player.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:NetworkRank">serverguard.ranks:NetworkRank(uniqueID[, bRemove])</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Sends a rank's data to all connected players.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:RemoveRank">serverguard.ranks:RemoveRank(uniqueID[, bSaveless])</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Removes a rank from memory.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:GetStored">serverguard.ranks:GetStored()</a></td>
+<td class="summary">Returns all the ranks.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:FindByID">serverguard.ranks:FindByID(uniqueID)</a></td>
+<td class="summary">Finds a rank by the given unique ID.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:IsDefault">serverguard.ranks:IsDefault(identifier)</a></td>
+<td class="summary">Whether or not the rank's unique ID is a default one.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:SetData">serverguard.ranks:SetData(rank, key, value)</a></td>
+<td class="summary">Sets a data field for a rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:GetData">serverguard.ranks:GetData(rank, key, default)</a></td>
+<td class="summary">Gets a data field for a rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:HasPermission">serverguard.ranks:HasPermission(rank, identifier)</a></td>
+<td class="summary">Gets whether or not the rank has the given permission.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:GivePermission">serverguard.ranks:GivePermission(rank, identifier)</a></td>
+<td class="summary">Gives a permission to the specified rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.ranks:TakePermission">serverguard.ranks:TakePermission(rank, identifier)</a></td>
+<td class="summary">Revokes a permission from the specified rank.</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Saves a rank.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#rankTable">rankTable</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Saves a rank in ranktable form.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Adds a new rank.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.ranks:SavePlayerRank"></a>
+<strong>serverguard.ranks:SavePlayerRank(player, rank)</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Saves a player's rank.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to save the rank of.
+</li>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:Load"></a>
+<strong>serverguard.ranks:Load()</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Loads all of the ranks into memory.
+You shouldn't call this unless you know what you're doing.
+</dd>
+<dt>
+<a name="serverguard.ranks:SendUpdate"></a>
+<strong>serverguard.ranks:SendUpdate(player)</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Sends all ranks' data to a player.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to send the data to.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:NetworkRank"></a>
+<strong>serverguard.ranks:NetworkRank(uniqueID[, bRemove])</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Sends a rank's data to all connected players.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">bRemove</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to remove the rank. Defaults to false.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:RemoveRank"></a>
+<strong>serverguard.ranks:RemoveRank(uniqueID[, bSaveless])</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Removes a rank from memory.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank to remove.
+</li>
+<li><span class="parameter">bSaveless</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to skip saving. Defaults to false.
+(<em>optional</em>)
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<li>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the removal was successful.</li>
+<li>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The error message if the removal failed.</li>
+</ol>
+</dd>
+<dt>
+<a name="serverguard.ranks:GetStored"></a>
+<strong>serverguard.ranks:GetStored()</strong>
+</dt>
+<dd>
+Returns all the ranks.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+The list of ranks
+</ol>
+</dd>
+<dt>
+<a name="serverguard.ranks:FindByID"></a>
+<strong>serverguard.ranks:FindByID(uniqueID)</strong>
+</dt>
+<dd>
+Finds a rank by the given unique ID.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+The rank table.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.ranks:IsDefault"></a>
+<strong>serverguard.ranks:IsDefault(identifier)</strong>
+</dt>
+<dd>
+Whether or not the rank's unique ID is a default one. (i.e user, founder, etc)
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The rank's unique ID.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">bool</span></span>
+Whether or not the rank is a default rank.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.ranks:SetData"></a>
+<strong>serverguard.ranks:SetData(rank, key, value)</strong>
+</dt>
+<dd>
+Sets a data field for a rank. You shouldn't call this unless you know what you're doing.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The rank's unique ID.
+</li>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key to set.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to set.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:GetData"></a>
+<strong>serverguard.ranks:GetData(rank, key, default)</strong>
+</dt>
+<dd>
+Gets a data field for a rank. You shouldn't call this unless you know what you're doing.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The rank's unique ID.
+</li>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key to get.
+</li>
+<li><span class="parameter">default</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The default value if the key/value doesn't exist.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The stored data.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.ranks:HasPermission"></a>
+<strong>serverguard.ranks:HasPermission(rank, identifier)</strong>
+</dt>
+<dd>
+Gets whether or not the rank has the given permission.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the permission.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:GivePermission"></a>
+<strong>serverguard.ranks:GivePermission(rank, identifier)</strong>
+</dt>
+<dd>
+Gives a permission to the specified rank.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The permission to give the rank.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.ranks:TakePermission"></a>
+<strong>serverguard.ranks:TakePermission(rank, identifier)</strong>
+</dt>
+<dd>
+Revokes a permission from the specified rank.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">rank</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">identifier</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The permission to revoke.
+</li>
+</ul>
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Saves a rank.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The pretty name of the rank.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+The color of the rank.
+</li>
+<li><span class="parameter">immunity</span>
+<span class="types"><span class="type">number</span></span>
+The immunity level of the rank.
+</li>
+<li><span class="parameter">texture</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The texture path of the rank.
+</li>
+<li><span class="parameter">bNew</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether to save as a new rank, or to update an existing one with the same name. Defaults to false.
+(<em>optional</em>)
+</li>
+<li><span class="parameter">targetable</span>
+<span class="types"><span class="type">number</span></span>
+The targetable rank of a player
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="rankTable"></a>
+<strong>rankTable</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Saves a rank in ranktable form.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">uniqueID</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">bNew</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether to save as a new rank, or to update an existing one with the same name. Defaults to false.
+(<em>optional</em>)
+</li>
+</ul>
+</dd>
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Adds a new rank.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the rank.
+</li>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The pretty name of the rank.
+</li>
+<li><span class="parameter">color</span>
+<span class="types"><span class="type">color</span></span>
+The color of the rank.
+</li>
+<li><span class="parameter">immunity</span>
+<span class="types"><span class="type">number</span></span>
+The immunity level of the rank.
+</li>
+<li><span class="parameter">texture</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The texture path of the rank.
+</li>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

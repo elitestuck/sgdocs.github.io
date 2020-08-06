@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><strong>serverguard</strong></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Global library that holds all other libraries, and various small helper functions.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#GetCurrentVersion">GetCurrentVersion()</a></td>
+<td class="summary">Returns the version of this server's copy of ServerGuard.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#GetLatestVersion">GetLatestVersion()</a></td>
+<td class="summary">Returns the latest version of ServerGuard.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#PrintConsole">PrintConsole(text)</a></td>
+<td class="summary">Prints to console with the time and a <code>[ServerGuard]</code> prefix.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#ParseFile">ParseFile(filePath, state)</a></td>
+<td class="summary">Includes files based on their state (client, server, shared).</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#Notify">Notify(player, ...)</a></td>
+<td class="summary">Sends a message in a player's chat box.</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#SERVERGUARD.NOTIFY">SERVERGUARD.NOTIFY</a></td>
+<td class="summary">Enumeration table to specify notify colour.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#SERVERGUARD.STATE">SERVERGUARD.STATE</a></td>
+<td class="summary">Enumeration table to specify file state.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#SERVERGUARD.IMMUNITY">SERVERGUARD.IMMUNITY</a></td>
+<td class="summary">Enumeration table to specify immunity comparisons.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="GetCurrentVersion"></a>
+<strong>GetCurrentVersion()</strong>
+</dt>
+<dd>
+Returns the version of this server's copy of ServerGuard.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Version number with format <code>#.#.#</code>.
+</ol>
+</dd>
+<dt>
+<a name="GetLatestVersion"></a>
+<strong>GetLatestVersion()</strong>
+</dt>
+<dd>
+Returns the latest version of ServerGuard. This could be incorrect,
+as the server has to wait for the HTTP request to complete.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+Version number with format <code>#.#.#</code>.
+</ol>
+</dd>
+<dt>
+<a name="PrintConsole"></a>
+<strong>PrintConsole(text)</strong>
+</dt>
+<dd>
+Prints to console with the time and a <code>[ServerGuard]</code> prefix.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">text</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The text to print to the console.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="ParseFile"></a>
+<strong>ParseFile(filePath, state)</strong>
+</dt>
+<dd>
+Includes files based on their state (client, server, shared).
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">filePath</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The file to parse.
+</li>
+<li><span class="parameter">state</span>
+<span class="types"><a class="type" href="../modules/serverguard.html#SERVERGUARD.STATE">SERVERGUARD.STATE</a></span>
+State enumeration to specify how to parse it.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">serverguard.ParseFile(<span class="string">"tools/sv_administration.lua"</span>, SERVERGUARD.STATE.SERVER);</pre>
+</ul>
+</dd>
+<dt>
+<a name="Notify"></a>
+<strong>Notify(player, ...)</strong>
+</dt>
+<dd>
+Sends a message in a player's chat box. Set player to nil or LocalPlayer() when using clientside.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to send the notification to. Specify nil to send to everyone.
+</li>
+<li><span class="parameter">...</span>
+Any notify enumeration followed by text.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">serverguard.Notify(<span class="keyword">nil</span>, SERVERGUARD.NOTIFY.GREEN, <span class="string">"This"</span>, SERVERGUARD.NOTIFY.WHITE, <span class="string">" is a test."</span>);</pre>
+</ul>
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="SERVERGUARD.NOTIFY"></a>
+<strong>SERVERGUARD.NOTIFY</strong>
+</dt>
+<dd>
+Enumeration table to specify notify colour.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">RED</span>
+Red colour.
+</li>
+<li><span class="parameter">WHITE</span>
+White colour.
+</li>
+<li><span class="parameter">GREEN</span>
+Green colour.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.html#Notify">serverguard.Notify</a>
+</ul>
+</dd>
+<dt>
+<a name="SERVERGUARD.STATE"></a>
+<strong>SERVERGUARD.STATE</strong>
+</dt>
+<dd>
+Enumeration table to specify file state.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">SERVER</span>
+Server state.
+</li>
+<li><span class="parameter">CLIENT</span>
+Client state.
+</li>
+<li><span class="parameter">SHARED</span>
+Server and client state.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.html#ParseFile">serverguard.ParseFile</a>
+</ul>
+</dd>
+<dt>
+<a name="SERVERGUARD.IMMUNITY"></a>
+<strong>SERVERGUARD.IMMUNITY</strong>
+</dt>
+<dd>
+Enumeration table to specify immunity comparisons.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">EQUAL</span>
+Immunities are equal.
+</li>
+<li><span class="parameter">LESS</span>
+Target immunity is less than the given one.
+</li>
+<li><span class="parameter">LESSOREQUAL</span>
+Target immunity is less than or equal to the given one.
+</li>
+<li><span class="parameter">ANY</span>
+Any immunity works.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

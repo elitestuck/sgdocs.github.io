@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><a href="../modules/lua.modules.sh_config.html">lua.modules.sh_config</a></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><strong>serverguard.phrase</strong></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>serverguard.phrase</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Provides support for languages through the use of phrases.</p>
+</p>
+<p>
+</p>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#serverguard.phrase:AddLanguage">serverguard.phrase:AddLanguage(language)</a></td>
+<td class="summary">Adds a language that phrases can use.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.phrase:SetLanguage">serverguard.phrase:SetLanguage(language)</a></td>
+<td class="summary">Sets the language used for phrases.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.phrase:Add">serverguard.phrase:Add(language, unique, format)</a></td>
+<td class="summary">Adds a phrase to the specified language.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.phrase:Get">serverguard.phrase:Get(unique, ...)</a></td>
+<td class="summary">Returns the text from a phrase.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.phrase:GetFormatted">serverguard.phrase:GetFormatted(unique, ...)</a></td>
+<td class="summary">Returns the notify-formatted text from a phrase.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#SGP">SGP(unique, ...)</a></td>
+<td class="summary">A shorthand function for serverguard.phrase:Get().</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#SGPF">SGPF(unique, ...)</a></td>
+<td class="summary">A shorthand function for serverguard.phrase:GetFormatted().</td>
+</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#data">data</a></td>
+<td class="summary">Adds languages and phrases specified in the table.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header "><a name="Functions"></a>Functions</h2>
+<dl class="function">
+<dt>
+<a name="serverguard.phrase:AddLanguage"></a>
+<strong>serverguard.phrase:AddLanguage(language)</strong>
+</dt>
+<dd>
+Adds a language that phrases can use.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">language</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the language.
+</li>
+</ul>
+</dd>
+<dt>
+ <a name="serverguard.phrase:SetLanguage"></a>
+<strong>serverguard.phrase:SetLanguage(language)</strong>
+</dt>
+<dd>
+Sets the language used for phrases.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">language</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the language.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.phrase:Add"></a>
+<strong>serverguard.phrase:Add(language, unique, format)</strong>
+</dt>
+<dd>
+Adds a phrase to the specified language. Supports string formatting with %s, etc.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">language</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the language.
+</li>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the phrase.
+</li>
+<li><span class="parameter">format</span>
+A string or table of strings/notify constants.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<li><pre class="example">serverguard.phrase:Add(<span class="string">"english"</span>, <span class="string">"test_phrase"</span>, <span class="string">"This is a test."</span>);</pre></li>
+<li><pre class="example">serverguard.phrase:Add(<span class="string">"english"</span>, <span class="string">"another_phrase"</span>, <span class="string">"This one has some %s formatting!"</span>);</pre></li>
+<li><pre class="example">serverguard.phrase:Add(<span class="string">"english"</span>, <span class="string">"test_phrase_three"</span>, {SERVERGUARD.NOTIFY.GREEN, <span class="string">"This"</span>, SERVERGUARD.NOTIFY.WHITE, <span class="string">" has some "</span>, SERVERGUARD.NOTIFY.GREEN, <span class="string">"%s"</span>, SERVERGUARD.NOTIFY.WHITE, <span class="string">" formatting."</span>});</pre></li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.phrase:Get"></a>
+<strong>serverguard.phrase:Get(unique, ...)</strong>
+</dt>
+<dd>
+Returns the text from a phrase.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the phrase.
+</li>
+<li><span class="parameter">...</span>
+[opt] Any parameters that the phrase may need.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The text from the phrase.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.phrase:GetFormatted"></a>
+<strong>serverguard.phrase:GetFormatted(unique, ...)</strong>
+</dt>
+<dd>
+Returns the notify-formatted text from a phrase.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the phrase.
+</li>
+<li><span class="parameter">...</span>
+[opt] Any parameters that the phrase may need.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+A table formatted for use with serverguard.Notify().
+</ol>
+<h3>See also:</h3>
+<ul>
+<li><a href="../modules/serverguard.phrase.html#SGPF">SGPF</a></li>
+<li><a href="../modules/serverguard.html#Notify">serverguard.Notify</a></li>
+</ul>
+</dd>
+<dt>
+<a name="SGP"></a>
+<strong>SGP(unique, ...)</strong>
+</dt>
+<dd>
+A shorthand function for serverguard.phrase:Get().
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the phrase.
+</li>
+<li><span class="parameter">...</span>
+[opt] Any parameters that the phrase may need.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.phrase.html#serverguard.phrase:Get">serverguard.phrase:Get</a>
+</ul>
+</dd>
+<dt>
+<a name="SGPF"></a>
+<strong>SGPF(unique, ...)</strong>
+</dt>
+<dd>
+A shorthand function for serverguard.phrase:GetFormatted().
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the phrase.
+</li>
+<li><span class="parameter">...</span>
+[opt] Any parameters that the phrase may need.
+</li>
+</ul>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/serverguard.phrase.html#serverguard.phrase:GetFormatted">serverguard.phrase:GetFormatted</a>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">serverguard.Notify(<span class="keyword">nil</span>, SGFP(<span class="string">"test_phrase_three"</span>, <span class="string">"awesome"</span>));</pre>
+</ul>
+</dd>
+</dl>
+<h2 class="section-header "><a name="Tables"></a>Tables</h2>
+<dl class="function">
+<dt>
+<a name="data"></a>
+<strong>data</strong>
+</dt>
+<dd>
+Adds languages and phrases specified in the table. See modules/sh_phrase.lua for an example table.
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>

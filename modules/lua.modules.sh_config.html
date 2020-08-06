@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>ServerGuard Documentation</title>
+<link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+<div id="product">
+<div id="product_logo"></div>
+<div id="product_name"><big><b></b></big></div>
+<div id="product_description"></div>
+</div> 
+<div id="main">
+
+<div id="navigation">
+<br />
+<h1>ServerGuard</h1>
+<ul>
+<li><a href="../index.html">Index</a></li>
+</ul>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_CONFIG_CLASS">Class CONFIG_CLASS </a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<li><strong>lua.modules.sh_config</strong></li>
+<li><a href="../modules/serverguard.html">serverguard</a></li>
+<li><a href="../modules/serverguard.command.html">serverguard.command</a></li>
+<li><a href="../modules/serverguard.mysql.html">serverguard.mysql</a></li>
+<li><a href="../modules/serverguard.netstream.html">serverguard.netstream</a></li>
+<li><a href="../modules/serverguard.permission.html">serverguard.permission</a></li>
+<li><a href="../modules/serverguard.phrase.html">serverguard.phrase</a></li>
+<li><a href="../modules/serverguard.player.html">serverguard.player</a></li>
+<li><a href="../modules/serverguard.plugin.html">serverguard.plugin</a></li>
+<li><a href="../modules/serverguard.ranks.html">serverguard.ranks</a></li>
+<li><a href="../modules/serverguard.themes.html">serverguard.themes</a></li>
+<li><a href="../modules/util.html">util</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>Module <code>lua.modules.sh_config</code></h1>
+<p>
+<h2>Shared</h2>
+<p> Simplifies the saving/loading/networking of configuration options.</p>
+</p>
+<p> Files will be saved in <code>data/serverguard/config/&lt;name&gt;.txt</code>.</p>
+<h2><a href="#Class_CONFIG_CLASS">Class CONFIG_CLASS </a></h2>
+<table class="function_list">
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:Boolean">CONFIG_CLASS:Boolean(key, value, description)</a></td>
+<td class="summary">Adds a configuration option whose key is a boolean.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:Number">CONFIG_CLASS:Number(key, value, description)</a></td>
+<td class="summary">Adds a configuration option whose key is a number.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:String">CONFIG_CLASS:String(key, value, description)</a></td>
+<td class="summary">Adds a configuration option whose key is a string.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:New">CONFIG_CLASS:New(name)</a></td>
+<td class="summary"><strong>This is called internally, use the create method.</strong>
+Creates a new configuration object with the specified name.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:SetValue">CONFIG_CLASS:SetValue(key, value, bDontNetwork)</a></td>
+<td class="summary">Sets a configuration value and networks it to clients.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:SetPermission">CONFIG_CLASS:SetPermission(permission)</a></td>
+<td class="summary">Sets a required permission to set values from the client.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:CheckPermission">CONFIG_CLASS:CheckPermission(player)</a></td>
+<td class="summary">Checks whether or not a player has permission to set the value.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:SetAutoSave">CONFIG_CLASS:SetAutoSave(value)</a></td>
+<td class="summary">Sets whether or not the configuration object auto-saves.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:AddCallback">CONFIG_CLASS:AddCallback(key, callback)</a></td>
+<td class="summary">Adds a callback function to run when the specified key has been changed.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:GetDescription">CONFIG_CLASS:GetDescription(key)</a></td>
+<td class="summary">Gets the description of the configuration option.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:GetSerialized">CONFIG_CLASS:GetSerialized()</a></td>
+<td class="summary">Gets the serialized representation of the configuration object.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:GetValue">CONFIG_CLASS:GetValue(key)</a></td>
+<td class="summary">Gets the value assigned to the given key.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:GetKeyValues">CONFIG_CLASS:GetKeyValues()</a></td>
+<td class="summary">Gets a key -> value table of all the configuration options.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:GetTable">CONFIG_CLASS:GetTable()</a></td>
+<td class="summary">Returns the raw entry table for the configuration object.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:Load">CONFIG_CLASS:Load()</a></td>
+<td class="summary">Loads the saved configuration options from disk.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:Save">CONFIG_CLASS:Save(bForce)</a></td>
+<td class="summary"><strong>(SERVERSIDE)</strong> Queues the configuration object to be saved to disk.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS:RequestFullUpdate">CONFIG_CLASS:RequestFullUpdate()</a></td>
+<td class="summary"><strong>(CLIENTSIDE)</strong> Requests a full update of all configuration values from the server.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#DCheckBox.BindToConfig">DCheckBox.BindToConfig</a></td>
+<td class="summary">Binds a panel to a configuration option.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.config.Create">serverguard.config.Create(unique)</a></td>
+<td class="summary">Creates a new configuration object with the specified name.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#serverguard.config.New">serverguard.config.New(unique, callback)</a></td>
+<td class="summary"><strong>(DEPRECATED)</strong> Add a new configuration entry.</td>
+</tr>
+<tr>
+<td class="name" nowrap><a href="#CONFIG_CLASS.data">CONFIG_CLASS.data</a></td>
+<td class="summary"><strong>(DEPRECATED)</strong> Saves the configuration entry.</td>
+</tr>
+</table>
+<br />
+<br />
+<h2 class="section-header has-description"><a name="Class_CONFIG_CLASS"></a>Class CONFIG_CLASS </h2>
+<div class="section-description">
+Configuration class object that's used to save, load, and network settings to clients.
+</div>
+<dl class="function">
+<dt>
+<a name="CONFIG_CLASS:Boolean"></a>
+<strong>CONFIG_CLASS:Boolean(key, value, description)</strong>
+</dt>
+<dd>
+Adds a configuration option whose key is a boolean.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key it's referenced by.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The default value that'll be set if none exists.
+</li>
+<li><span class="parameter">description</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+[opt] The description of the option.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">config:AddBoolean(<span class="string">"testbool"</span>, <span class="keyword">true</span>, <span class="string">"Just a test boolean."</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:Number"></a>
+<strong>CONFIG_CLASS:Number(key, value, description)</strong>
+</dt>
+<dd>
+Adds a configuration option whose key is a number.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key it's referenced by.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The default value that'll be set if none exists.
+</li>
+<li><span class="parameter">description</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+[opt] The description of the option.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">config:AddNumber(<span class="string">"testnumber"</span>, <span class="number">1234</span>, <span class="string">"Numbers are great!"</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:String"></a>
+<strong>CONFIG_CLASS:String(key, value, description)</strong>
+</dt>
+<dd>
+Adds a configuration option whose key is a string.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key it's referenced by.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The default value that'll be set if none exists.
+</li>
+<li><span class="parameter">description</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+[opt] The description of the option.
+</li>
+</ul>
+<h3>Usage:</h3>
+<ul>
+<pre class="example">config:AddString(<span class="string">"teststring"</span>, <span class="string">"hello hello hello!"</span>, <span class="string">"Strings are pretty cool too."</span>);</pre>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:New"></a>
+<strong>CONFIG_CLASS:New(name)</strong>
+</dt>
+<dd>
+<strong>This is called internally, use the create method.</strong>
+Creates a new configuration object with the specified name.
+This name is used as both a reference and the name of the file it's saved to. As such, ensure that the name is something the OS will like.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">name</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the config object.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+New config object.
+</ol>
+<h3>See also:</h3>
+<ul>
+<a href="../modules/lua.modules.sh_config.html#serverguard.config.Create">serverguard.config.Create</a>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:SetValue"></a>
+<strong>CONFIG_CLASS:SetValue(key, value, bDontNetwork)</strong>
+</dt>
+<dd>
+Sets a configuration value and networks it to clients.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key of the config option.
+</li>
+<li><span class="parameter">value</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The value to set it to.
+</li>
+<li><span class="parameter">bDontNetwork</span>
+<span class="types"><span class="type">boolean</span></span>
+[opt] Whether or not to network it to clients.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:SetPermission"></a>
+<strong>CONFIG_CLASS:SetPermission(permission)</strong>
+</dt>
+<dd>
+Sets a required permission to set values from the client.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">permission</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The required permission. Can be a table of permissions.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:CheckPermission"></a>
+<strong>CONFIG_CLASS:CheckPermission(player)</strong>
+</dt>
+<dd>
+Checks whether or not a player has permission to set the value.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">player</span>
+<span class="types"><span class="type">player</span></span>
+The player to check permissions for.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+bool Whether or not they have permission.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:SetAutoSave"></a>
+<strong>CONFIG_CLASS:SetAutoSave(value)</strong>
+</dt>
+<dd>
+Sets whether or not the configuration object auto-saves.
+When set, it will be automatically saved when you set a value.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">value</span>
+<span class="types"><span class="type">boolean</span></span>
+Whether or not to auto-save.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:AddCallback"></a>
+<strong>CONFIG_CLASS:AddCallback(key, callback)</strong>
+</dt>
+<dd>
+Adds a callback function to run when the specified key has been changed.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key to monitor for changes.
+</li>
+<li><span class="parameter">callback</span>
+<span class="types"><span class="type">function</span></span>
+The function to call when the value changes.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:GetDescription"></a>
+<strong>CONFIG_CLASS:GetDescription(key)</strong>
+</dt>
+<dd>
+Gets the description of the configuration option.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key of the configuration option.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The description.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:GetSerialized"></a>
+<strong>CONFIG_CLASS:GetSerialized()</strong>
+</dt>
+<dd>
+Gets the serialized representation of the configuration object.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The serialized object.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:GetValue"></a>
+<strong>CONFIG_CLASS:GetValue(key)</strong>
+</dt>
+<dd>
+Gets the value assigned to the given key. Returns nil if the key doesn't exist.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The key to get the value from.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+The value of the key.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:GetKeyValues"></a>
+<strong>CONFIG_CLASS:GetKeyValues()</strong>
+</dt>
+<dd>
+Gets a key -> value table of all the configuration options.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Table of options.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:GetTable"></a>
+<strong>CONFIG_CLASS:GetTable()</strong>
+</dt>
+<dd>
+Returns the raw entry table for the configuration object.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+Configuration table.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:Load"></a>
+<strong>CONFIG_CLASS:Load()</strong>
+</dt>
+<dd>
+Loads the saved configuration options from disk.
+Requests a full update from the server if ran on the client.
+<h3>Returns:</h3>
+<ol>
+<span class="types"><span class="type">CONFIG_CLASS</span></span>
+The configuration object.
+</ol>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:Save"></a>
+<strong>CONFIG_CLASS:Save(bForce)</strong>
+</dt>
+<dd>
+<strong>(SERVERSIDE)</strong> Queues the configuration object to be saved to disk.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">bForce</span>
+<span class="types"><span class="type">boolean</span></span>
+[opt] Whether or not to bypass the queue and save immediately to disk. Not recommended.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS:RequestFullUpdate"></a>
+<strong>CONFIG_CLASS:RequestFullUpdate()</strong>
+</dt>
+<dd>
+<strong>(CLIENTSIDE)</strong> Requests a full update of all configuration values from the server.
+<h3>See also:</h3>
+<ul>
+<a href="../modules/lua.modules.sh_config.html#CONFIG_CLASS:Load">CONFIG_CLASS:Load</a>
+</ul>
+</dd>
+<dt>
+<a name="DCheckBox.BindToConfig"></a>
+<strong>DCheckBox.BindToConfig</strong>
+</dt>
+<dd>
+Binds a panel to a configuration option.
+It will update the panel when the configuration option is updated, and vice versa.
+This overrides OnChange/ValueChanged/etc for panels, so make sure you call this last! It will retain previous callbacks when overriding.
+Applicable panels include: DCheckBox, DNumSlider, tiger.checkbox, tiger.numslider.
+<ul>
+<li><span class="parameter">config</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the configuration object.
+</li>
+<li><span class="parameter">key</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The configuration option to bind the panel to.
+</li>
+<li><span class="parameter">bRound</span>
+<span class="types"><span class="type">boolean</span></span>
+[opt] <strong>DNumSlider only:</strong> Whether or not to round the value before updating.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="serverguard.config.Create"></a>
+<strong>serverguard.config.Create(unique)</strong>
+</dt>
+<dd>
+Creates a new configuration object with the specified name.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The name of the config object.
+</li>
+</ul>
+<h3>Returns:</h3>
+<ol>
+New config object.
+</ol>
+</dd>
+<dt>
+<a name="serverguard.config.New"></a>
+<strong>serverguard.config.New(unique, callback)</strong>
+</dt>
+<dd>
+<strong>(DEPRECATED)</strong> Add a new configuration entry. The callback function is passed a table argument of the saved data.
+<h3>Parameters:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the entry.
+</li>
+<li><span class="parameter">callback</span>
+<span class="types"><span class="type">function</span></span>
+Function to execute when the data is loaded.
+</li>
+</ul>
+</dd>
+<dt>
+<a name="CONFIG_CLASS.data"></a>
+<strong>CONFIG_CLASS.data</strong>
+</dt>
+<dd>
+<strong>(DEPRECATED)</strong> Saves the configuration entry.
+<h3>Fields:</h3>
+<ul>
+<li><span class="parameter">unique</span>
+<span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+The unique ID of the entry.
+</li>
+</ul>
+</dd>
+</dl>
+</div> 
+</div> 
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-08-03 16:30:26 </i>
+</div> 
+</div> 
+</body>
+</html>
